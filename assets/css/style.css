@@ -1,0 +1,8 @@
+body {
+    background: url(../images/bg1.jpg) center center;
+    background-size: cover;
+    min-width: 100%;
+    min-height: 100%;
+     /* background-size: auto; */
+}
+
