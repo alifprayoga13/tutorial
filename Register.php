@@ -46,8 +46,8 @@ if ($_SESSION['level'] == "admin") {
                             </ul>
                         </div>
                     </div>
-                    <form action="proses.php" method="post" class="col-lg-12">
-                        <h5 class="title">Sign in</h5>
+                    <form action="save_Register.php" method="post" class="col-lg-12">
+                        <h5 class="title">Register</h5>
                         <div class="form-group form-float">
                             <div class="form-line">
                                 <input type="text" name="username" class="form-control" required>
@@ -60,12 +60,19 @@ if ($_SESSION['level'] == "admin") {
                                 <label class="form-label">Password</label>
                             </div>
                         </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="email" name="email" class="form-control" required>
+                                <label class="form-label">Email</label>
+                            </div>
+                        </div>
+                    
                         <div class="col-lg-12">
-                            <button type="submit" value="Login" name="login" class="btn btn-raised btn-secondary waves-effect w-100" style="border-radius: 10px;">LOGIN</button>
+                            <button type="submit" value="login" name="login" class="btn btn-raised btn-secondary waves-effect w-100" style="border-radius: 10px;">Register</button>
                         </div>
                     </form>
                     <div class="col-lg-12 m-t-20">
-                        <P>Not on here yet?<a class="m-3" href="Register.php">Sign Up</a></P>
+                        <P>Not on here yet?<a class="m-3" href="forgot.php">Sign In</a></P>
                     </div>
                 </div>
             </div>
