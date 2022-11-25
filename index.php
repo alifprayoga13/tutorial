@@ -1,7 +1,8 @@
 <?php
-    if ($_SESSION['level'] == "admin") {
+session_start();
+    if ($_SESSION['Level'] == "Admin") {
     header("Location: admin/index.php");
-} elseif ($_SESSION['level'] == "petugas") {
+} elseif ($_SESSION['Level'] == "User") {
     header("Location: user/index.php");
 } elseif (isset($_SESSION['SESSION_EMAIL'])) {
     header("Location: welcome.php");
@@ -27,12 +28,11 @@
         $email = mysqli_real_escape_string($conn, $_POST['email']);
         $password = mysqli_real_escape_string($conn, md5($_POST['password']));
 
-        $sql = "SELECT * FROM users WHERE email='{$email}' AND password='{$password}'";
+        $sql = "SELECT * from users where email='$email' and password='$password';";
         $result = mysqli_query($conn, $sql);
 
         if (mysqli_num_rows($result) === 1) {
             $row = mysqli_fetch_assoc($result);
-
             if (empty($row['code'])) {
                 $_SESSION['SESSION_EMAIL'] = $email;
                 header("Location: welcome.php");
@@ -85,22 +85,25 @@
                             </ul>
                         </div>
                     </div>
-                    <form action="proses.php" method="post" class="col-lg-12">
+                   
+                    <form action="" method="post" class="col-lg-12">
+                    <?php echo $msg; ?>
                         <h5 class="title">Sign in</h5>
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input type="text" name="username" class="form-control" required>
-                                <label class="form-label">Username</label>
+                            <input type="email" class="form-control" name="email" required>
+
+                                <label class="form-label">Email</label>
                             </div>
                         </div>
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input type="password" name="password" class="form-control" required>
+                                <input type="password" class="form-control" name="password" required>
                                 <label class="form-label">Password</label>
                             </div>
                         </div>
                         <div class="col-lg-12">
-                            <button type="submit" value="Login" name="login" class="btn btn-raised btn-secondary waves-effect w-100" style="border-radius: 10px;">LOGIN</button>
+                            <button name="submit" name="submit" class="btn btn-raised btn-secondary waves-effect w-100" style="border-radius: 10px;" class="btn" type="submit">Login</button>
                         </div>
                     </form>
                     <div class="col-lg-12 m-t-20">

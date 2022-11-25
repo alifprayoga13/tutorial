@@ -2,7 +2,7 @@
 $host = "localhost";
 $user = "root";
 $pass = "";
-$namadb = "multi_user";
+$namadb = "undangan";
 
 $conn = mysqli_connect($host, $user, $pass, $namadb);
 if (!$conn) {

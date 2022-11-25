@@ -5,12 +5,9 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
+
 session_start();
-if ($_SESSION['level'] == "admin") {
-    header("Location: admin/index.php");
-} elseif ($_SESSION['level'] == "petugas") {
-    header("Location: user/index.php");
-}elseif (isset($_SESSION['SESSION_EMAIL'])) {
+if (isset($_SESSION['SESSION_EMAIL'])) {
     header("Location: welcome.php");
     die();
 }
@@ -22,7 +19,7 @@ include 'config.php';
 $msg = "";
 
 if (isset($_POST['submit'])) {
-    $name = mysqli_real_escape_string($conn, $_POST['name']);
+    $name = mysqli_real_escape_string($conn, $_POST['username']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $password = mysqli_real_escape_string($conn, md5($_POST['password']));
     $confirm_password = mysqli_real_escape_string($conn, md5($_POST['confirm-password']));
@@ -32,7 +29,7 @@ if (isset($_POST['submit'])) {
         $msg = "<div class='alert alert-danger'>{$email} - This email address has been already exists.</div>";
     } else {
         if ($password === $confirm_password) {
-            $sql = "INSERT INTO users (name, email, password, code) VALUES ('{$name}', '{$email}', '{$password}', '{$code}')";
+            $sql = "INSERT INTO users (name, email, password, code, Level) VALUES ('{$name}', '{$email}', '{$password}', '{$code}', 'User')";
             $result = mysqli_query($conn, $sql);
 
             if ($result) {
@@ -52,13 +49,13 @@ if (isset($_POST['submit'])) {
                     $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
                     //Recipients
-                    $mail->setFrom('YOUR_EMAIL_HERE');
+                    $mail->setFrom('yogaan0987@gmail.com');
                     $mail->addAddress($email);
 
                     //Content
                     $mail->isHTML(true);                                  //Set email format to HTML
                     $mail->Subject = 'no reply';
-                    $mail->Body    = 'Here is the verification link <b><a href="http://localhost/login/?verification=' . $code . '">http://localhost/login/?verification=' . $code . '</a></b>';
+                    $mail->Body    = 'Here is the verification link <b><a href="http://localhost/tutorial/?verification=' . $code . '">http://localhost/tutorial/?verification=' . $code . '</a></b>';
 
                     $mail->send();
                     echo 'Message has been sent';
@@ -115,30 +112,37 @@ if (isset($_POST['submit'])) {
                             </ul>
                         </div>
                     </div>
-                    <form action="save_Register.php" method="post" class="col-lg-12">
+                    <?php echo $msg; ?>
+                    <form action="" method="post" class="col-lg-12">
                         <h5 class="title">Register</h5>
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input type="text" name="username" class="form-control" required>
+                                <input type="text" name="username" class="form-control username" value="<?php if (isset($_POST['submit'])) { echo $name; } ?>" required>
                                 <label class="form-label">Username</label>
                             </div>
                         </div>
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input type="email" name="email" class="form-control" required>
+                                <input type="email" name="email" class="form-control email" value="<?php if (isset($_POST['submit'])) { echo $email; } ?>" required>
                                 <label class="form-label">Email</label>
                             </div>
                         </div>
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input type="password" name="password" class="form-control" required>
+                                <input type="password" name="password" class="form-control password" required>
+                                <label class="form-label">Password</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                            <input type="password" class="form-control confirm-password" name="confirm-password"  required>
                                 <label class="form-label">Password</label>
                             </div>
                         </div>
 
 
                         <div class="col-lg-12">
-                            <button type="submit" value="login" name="login" class="btn btn-raised btn-secondary waves-effect w-100" style="border-radius: 10px;">Submit</button>
+                            <button type="submit" value="submit" name="submit" class="btn btn-raised btn-secondary waves-effect w-100" style="border-radius: 10px;">Submit</button>
                         </div>
                     </form>
 
@@ -155,7 +159,7 @@ if (isset($_POST['submit'])) {
                         </ul>
                     </div>
                     <div class="col-lg-12 m-t-20">
-                        <P>Already Have An Account?<a class="m-3" href="forgot.php">Sign In</a></P>
+                        <P>Already Have An Account?<a class="m-3" href="index.php">Sign In</a></P>
                     </div>
                 </div>
             </div>

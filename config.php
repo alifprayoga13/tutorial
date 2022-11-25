@@ -1,6 +1,6 @@
 <?php
 
-$conn = mysqli_connect("localhost", "root", "", "multi_user");
+$conn = mysqli_connect("localhost", "root", "", "undangan");
 
 if (!$conn) {
     echo "Connection Failed";
