@@ -6,7 +6,11 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 session_start();
-if (isset($_SESSION['SESSION_EMAIL'])) {
+if ($_SESSION['level'] == "admin") {
+    header("Location: admin/index.php");
+} elseif ($_SESSION['level'] == "petugas") {
+    header("Location: user/index.php");
+}elseif (isset($_SESSION['SESSION_EMAIL'])) {
     header("Location: welcome.php");
     die();
 }
@@ -42,8 +46,8 @@ if (isset($_POST['submit'])) {
                     $mail->isSMTP();                                            //Send using SMTP
                     $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
                     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-                    $mail->Username   = 'YOUR_EMAIL_HERE';                     //SMTP username
-                    $mail->Password   = 'YOUR_PASSWORD_HERE';                               //SMTP password
+                    $mail->Username   = 'yogaan0987@gmail.com';                     //SMTP username
+                    $mail->Password   = 'zkhocqlaeyjlzuin';                               //SMTP password
                     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
                     $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
@@ -73,17 +77,7 @@ if (isset($_POST['submit'])) {
 }
 ?>
 
-<?php
-error_reporting(0);
-session_start();
-if ($_SESSION['level'] == "admin") {
-    header("Location: admin/index.php");
-} elseif ($_SESSION['level'] == "petugas") {
-    header("Location: user/index.php");
-}
 
-
-?>
 <!doctype html>
 <html class="no-js " lang="en">
 
