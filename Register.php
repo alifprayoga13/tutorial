@@ -1,4 +1,79 @@
 <?php
+//Import PHPMailer classes into the global namespace
+//These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+session_start();
+if (isset($_SESSION['SESSION_EMAIL'])) {
+    header("Location: welcome.php");
+    die();
+}
+
+//Load Composer's autoloader
+require 'vendor/autoload.php';
+
+include 'config.php';
+$msg = "";
+
+if (isset($_POST['submit'])) {
+    $name = mysqli_real_escape_string($conn, $_POST['name']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $password = mysqli_real_escape_string($conn, md5($_POST['password']));
+    $confirm_password = mysqli_real_escape_string($conn, md5($_POST['confirm-password']));
+    $code = mysqli_real_escape_string($conn, md5(rand()));
+
+    if (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM users WHERE email='{$email}'")) > 0) {
+        $msg = "<div class='alert alert-danger'>{$email} - This email address has been already exists.</div>";
+    } else {
+        if ($password === $confirm_password) {
+            $sql = "INSERT INTO users (name, email, password, code) VALUES ('{$name}', '{$email}', '{$password}', '{$code}')";
+            $result = mysqli_query($conn, $sql);
+
+            if ($result) {
+                echo "<div style='display: none;'>";
+                //Create an instance; passing `true` enables exceptions
+                $mail = new PHPMailer(true);
+
+                try {
+                    //Server settings
+                    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+                    $mail->isSMTP();                                            //Send using SMTP
+                    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+                    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+                    $mail->Username   = 'YOUR_EMAIL_HERE';                     //SMTP username
+                    $mail->Password   = 'YOUR_PASSWORD_HERE';                               //SMTP password
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+                    $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+                    //Recipients
+                    $mail->setFrom('YOUR_EMAIL_HERE');
+                    $mail->addAddress($email);
+
+                    //Content
+                    $mail->isHTML(true);                                  //Set email format to HTML
+                    $mail->Subject = 'no reply';
+                    $mail->Body    = 'Here is the verification link <b><a href="http://localhost/login/?verification=' . $code . '">http://localhost/login/?verification=' . $code . '</a></b>';
+
+                    $mail->send();
+                    echo 'Message has been sent';
+                } catch (Exception $e) {
+                    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+                }
+                echo "</div>";
+                $msg = "<div class='alert alert-info'>We've send a verification link on your email address.</div>";
+            } else {
+                $msg = "<div class='alert alert-danger'>Something wrong went.</div>";
+            }
+        } else {
+            $msg = "<div class='alert alert-danger'>Password and Confirm Password do not match</div>";
+        }
+    }
+}
+?>
+
+<?php
 error_reporting(0);
 session_start();
 if ($_SESSION['level'] == "admin") {
@@ -26,13 +101,13 @@ if ($_SESSION['level'] == "admin") {
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/authentication.css">
     <link rel="stylesheet" href="assets/css/color_skins.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/Register.css">
     <link rel="stylesheet" href="assets/css/Responsive.css">
 </head>
 
 <body class="">
     <div class="authentication">
-        <div class="card" style="position: absolute">
+        <div class="card" style="margin-left: -150px;">
             <div class="body">
                 <div class="row">
                     <div class="col-lg-12">
@@ -56,23 +131,37 @@ if ($_SESSION['level'] == "admin") {
                         </div>
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input type="password" name="password" class="form-control" required>
-                                <label class="form-label">Password</label>
-                            </div>
-                        </div>
-                        <div class="form-group form-float">
-                            <div class="form-line">
                                 <input type="email" name="email" class="form-control" required>
                                 <label class="form-label">Email</label>
                             </div>
                         </div>
-                    
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="password" name="password" class="form-control" required>
+                                <label class="form-label">Password</label>
+                            </div>
+                        </div>
+
+
                         <div class="col-lg-12">
-                            <button type="submit" value="login" name="login" class="btn btn-raised btn-secondary waves-effect w-100" style="border-radius: 10px;">Register</button>
+                            <button type="submit" value="login" name="login" class="btn btn-raised btn-secondary waves-effect w-100" style="border-radius: 10px;">Submit</button>
                         </div>
                     </form>
+
+                    <div class="col-lg-12">
+                        <br>
+                        <p>or sign up with</p>
+                    </div>
+                    <div class="col-lg-12">
+                        <br>
+                        <ul class="list-unstyled l-social">
+                            <li>
+                                <a href="https://www.google.com/?hl=id"><i class="zmdi zmdi-google"></i></a>
+                            </li>
+                        </ul>
+                    </div>
                     <div class="col-lg-12 m-t-20">
-                        <P>Not on here yet?<a class="m-3" href="forgot.php">Sign In</a></P>
+                        <P>Already Have An Account?<a class="m-3" href="forgot.php">Sign In</a></P>
                     </div>
                 </div>
             </div>
