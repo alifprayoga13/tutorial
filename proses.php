@@ -32,4 +32,7 @@ if (isset($_POST['login']))
 }else{
 	echo "<script>alert('Anda belum mengisi Form !!!');document.location.href='index'</script>/n";
 }
+
+
+
 ?>

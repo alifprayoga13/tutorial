@@ -1,52 +1,33 @@
 <?php
-session_start();
-error_reporting(0);
-    if ($_SESSION['Level'] == "Admin") {
-    header("Location: admin/index.php");
-} elseif ($_SESSION['Level'] == "User") {
-    header("Location: user/index.php");
-} elseif (isset($_SESSION['SESSION_EMAIL'])) {
-    header("Location: welcome.php");
-    die();
+
+$msg = "";
+
+include 'config.php';
+
+if (isset($_GET['reset'])) {
+    if (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM users WHERE code='{$_GET['reset']}'")) > 0) {
+        if (isset($_POST['submit'])) {
+            $password = mysqli_real_escape_string($conn, md5($_POST['password']));
+            $confirm_password = mysqli_real_escape_string($conn, md5($_POST['confirm-password']));
+
+            if ($password === $confirm_password) {
+                $query = mysqli_query($conn, "UPDATE users SET password='{$password}', code='' WHERE code='{$_GET['reset']}'");
+
+                if ($query) {
+                    header("Location: index.php");
+                }
+            } else {
+                $msg = "<div class='alert alert-danger'>Password and Confirm Password do not match.</div>";
+            }
+        }
+    } else {
+        $msg = "<div class='alert alert-danger'>Reset Link do not match.</div>";
+    }
+} else {
+    header("Location: forgot-password.php");
 }
 
-    include 'config.php';
-    $msg = "";
-
-    if (isset($_GET['verification'])) {
-        if (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM users WHERE code='{$_GET['verification']}'")) > 0) {
-            $query = mysqli_query($conn, "UPDATE users SET code='' WHERE code='{$_GET['verification']}'");
-            
-            if ($query) {
-                $msg = "<div class='alert alert-success'>Account verification has been successfully completed.</div>";
-            }
-        } else {
-            header("Location: index.php");
-        }
-    }
-
-    if (isset($_POST['submit'])) {
-        $email = mysqli_real_escape_string($conn, $_POST['email']);
-        $password = mysqli_real_escape_string($conn, md5($_POST['password']));
-
-        $sql = "SELECT * from users where email='$email' and password='$password';";
-        $result = mysqli_query($conn, $sql);
-
-        if (mysqli_num_rows($result) === 1) {
-            $row = mysqli_fetch_assoc($result);
-            if (empty($row['code'])) {
-                $_SESSION['SESSION_EMAIL'] = $email;
-                header("Location: welcome.php");
-            } else {
-                $msg = "<div class='alert alert-info'>First verify your account and try again.</div>";
-            }
-        } else {
-            $msg = "<div class='alert alert-danger'>Email or password do not match.</div>";
-        }
-    }
 ?>
-
-
 
 
 <!doctype html>
@@ -66,13 +47,13 @@ error_reporting(0);
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/authentication.css">
     <link rel="stylesheet" href="assets/css/color_skins.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/Register.css">
     <link rel="stylesheet" href="assets/css/Responsive.css">
 </head>
 
 <body class="">
     <div class="authentication">
-        <div class="card" style="position: absolute">
+        <div class="card" style="margin-left: -150px;">
             <div class="body">
                 <div class="row">
                     <div class="col-lg-12">
@@ -86,30 +67,28 @@ error_reporting(0);
                             </ul>
                         </div>
                     </div>
-                   
-                    <form action="" method="post" class="col-lg-12">
                     <?php echo $msg; ?>
-                        <h5 class="title">Sign in</h5>
+                    <form action="" method="post" class="col-lg-12">
+                        <h5 class="title">change password</h5>
                         <div class="form-group form-float">
                             <div class="form-line">
-                            <input type="email" class="form-control" name="email" required>
+                                <input type="password" name="password" class="form-control username" required>
+                                <label class="form-label">password</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="password" name="confirm-password" class="form-control username" required>
+                                <label class="form-label">confrim password</label>
+                            </div>
+                        </div>
 
-                                <label class="form-label">Email</label>
-                            </div>
-                        </div>
-                        <div class="form-group form-float">
-                            <div class="form-line">
-                                <input type="password" class="form-control" name="password" required>
-                                <label class="form-label">Password</label>
-                            </div>
-                        </div>
                         <div class="col-lg-12">
-                            <button name="submit" name="submit" class="btn btn-raised btn-secondary waves-effect w-100" style="border-radius: 10px;" class="btn" type="submit">Login</button>
+                            <button type="submit" value="submit" name="submit" class="btn btn-raised btn-secondary waves-effect w-100" style="border-radius: 10px;">Submit</button>
                         </div>
                     </form>
                     <div class="col-lg-12 m-t-20">
-                        <P>Not on here yet?<a class="m-3" href="Register.php">Sign Up</a></P>
-                        <P>Lupa Password?<a class="m-3" href="ForgotPassword.php">Forgot Password</a></P>
+                        <P>Remember the password?<a class="m-3" href="index.php">Back</a></P>
                     </div>
                 </div>
             </div>
