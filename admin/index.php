@@ -7,6 +7,10 @@ if($_SESSION['level']=="") {
 elseif ($_SESSION['level']=="petugas") {
     header("Location: ../user/index.php");
 }
+elseif (!isset($_SESSION['SESSION_EMAIL'])) {
+    header("Location: ../index.php");
+    die();
+}
 
 
 ?>

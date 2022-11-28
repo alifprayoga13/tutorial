@@ -1,0 +1,7 @@
+body {
+    background: url(../images/bg3.png) center center;
+    background-size: cover;
+    min-width: 100%;
+    min-height: 100%;
+     /* background-size: auto; */
+}

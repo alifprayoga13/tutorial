@@ -1,13 +1,13 @@
 <?php
 session_start();
-include 'koneksi.php';
+include 'config.php';
 
 if (isset($_POST['login'])) 
 {
-	$username = addslashes(trim($_POST['username']));
+	$username = addslashes(trim($_POST['email']));
 	$password	= md5($_POST['password']);
 
-	$query = mysqli_query($conn, "SELECT * FROM user WHERE username='$username' AND password='$password' ");
+	$query = mysqli_query($conn, "SELECT * FROM user WHERE email='$username' AND password='$password' ");
 	if (mysqli_num_rows($query) == 0) 
 	{
 		echo "<script>alert('Username atau Password yang Anda masukan salah !!!');document.location.href='index'</script>/n";
@@ -32,4 +32,7 @@ if (isset($_POST['login']))
 }else{
 	echo "<script>alert('Anda belum mengisi Form !!!');document.location.href='index'</script>/n";
 }
+
+
+
 ?>

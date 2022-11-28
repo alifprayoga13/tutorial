@@ -1,0 +1,18 @@
+.authentication{
+    margin-top: -110px;
+}
+
+@media screen and (max-width: 800px){
+    .card{
+        justify-content: center;
+        align-items: center;
+        margin-left: -180px;
+    }
+    .authentication{
+        margin-top: -20px;
+    }   
+
+    .card{
+        opacity: 0.7;
+    }
+}
