@@ -41,22 +41,23 @@ if (isset($_POST['submit'])) {
                     //Server settings
                     $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
                     $mail->isSMTP();                                            //Send using SMTP
-                    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+                    $mail->Host       = 'smtp-relay.sendinblue.com';                     //Set the SMTP server to send through
                     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-                    $mail->Username   = 'yogaan0987@gmail.com';                     //SMTP username
-                    $mail->Password   = 'zkhocqlaeyjlzuin';                               //SMTP password
-                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-                    $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+                    $mail->Username   = 'anonymoyan@tutanota.com';                     //SMTP username
+                    $mail->Password   = 'xsmtpsib-1011b000e4813ba86e48f16a64f0d61afd31c15cd360e6072b5e5df94a2f65a3-UzsE3Ch6QtIRybJ4';                               //SMTP password           //Enable implicit TLS encryption
+                    $mail->Port       = 587;        
+                    $mail->SMTPSecure = 'tls';                         //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
                     //Recipients
-                    $mail->setFrom('yogaan0987@gmail.com');
+                    $mail->setFrom('NoReplyKnoyan@foragikitsune.my.id');
                     $mail->addAddress($email);
 
                     //Content
                     $mail->isHTML(true);                                  //Set email format to HTML
                     $mail->Subject = 'no reply';
                     $mail->Body    = 'Here is the verification link <b><a href="http://localhost/tutorial/?verification=' . $code . '">http://localhost/tutorial/?verification=' . $code . '</a></b>';
-
+                    
+                    
                     $mail->send();
                     echo 'Message has been sent';
                 } catch (Exception $e) {
