@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page Example</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/portfolio-2.css">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Swiper.js -->
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <!-- Link AOS CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    
+</head>
+
+<body id="top-page" class="light">
+    <header class="main-header main">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="img/logo 1.png" alt="logo" class="img-fluid">
+                </a>
+                <button class="navbar-toggler custome px-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbar-top-main" aria-controls="navbar-top-main" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <div class="navbar-toggler-icon-custome-1"></div>
+                </button>
+
+                <div class="navbar-collapse collapse" id="navbar-top-main">
+                    <button class="navbar-toggler align-self-end mt-4 me-3 d-block d-lg-none" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#navbar-top-main" aria-controls="navbar-top-main"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <div class="navbar-toggler-close"></div>
+                    </button>
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll" href="#">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll" href="#">Tema</a>
+                        </li>
+                      
+                        <li class="nav-item">
+                            <a href="#" class="btn btn-gr-light-outline js-scroll">New invitation+</a>
+                        </li>
+                        <div class="collapse navbar-collapse" id="navbar-list-4">
+                      <ul class="navbar-nav ms-auto">
+                         <li class="nav_item">
+                         <li class="nav-item dropdown">
+                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                             <img src="img/WhatsApp Image 2022-11-26 at 11.07.24.jpg" width="40" height="40" class="rounded-circle">
+                            </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li><a class="dropdown-item" href="login.php">Sign In</a></li>
+                          <li><a class="dropdown-item" href="Register.php">Sign Up</a></li>
+                          <li><a class="dropdown-item" href="#">Setting</a></li>
+                          <li><a class="dropdown-item" href="logout.php">Log Out</a></li>
+                        </li>
+                        </ul>
+                        </li>   
+                        </ul>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+       <!--Awal Carousel-->
+         <div class="container">
+      <div id="carouselExampleIndicators" class="carousel slide mt-5" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+          
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="img/banner/banner-carrent.png" class="d-block img-fluid" alt="Gambar 1">
+          </div>
+          <div class="carousel-item">
+            <img src="img/banner/banner-logo.jpg" class="d-block img-fluid" alt="Gambar 2">
+          </div>
+          <div class="carousel-item">
+            <img src="img/banner/banner-portfolio.jpg" class="d-block img-fluid" alt="Gambar 3">
+          </div>
+          <div class="carousel-item">
+            <img src="img/banner/banner-carrent.png" class="d-block img-fluid" alt="Gambar 4">
+          </div>
+          
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      </div>
+   <!--Akhir Carousel-->
+
+    </header>
+    <!-- Section Ability -->
+    <section class="section-head section-ability text-end">
+        <div class="container">
+            <div class="d-flex flex-row align-items-center" data-aos="fade-right">
+             
+            </div>
+        </div>
+    </section>
+    <!-- Section About Me -->
+    <section class="section-head section-aboutme text-center" id="aboutme" data-aos="fade-down" data-aos-delay="50">
+        <div class="container">
+            <h2>Pilihan Tema</h2>
+            <p>Beberapa Macam Tema</p>
+               <section class="section-service-content">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+                    <div class="card service-item">    
+                            <img src="img/banner/banner-yt.jpg" alt="design-service" class="">
+                        <hr>
+                        <h2>Wedding Organizer</h2>
+                        <p>Make your graduation invitation untuk menjadikan sesuatu tersebut lebih menarik 
+                        </p>
+                        <br>
+                    <div>
+                    <a href="https://www.codepen.io/_fauzanahmad_" class="btn btn-secondary"
+                    target="_blank">Read More ....</a>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card service-item">
+                            <img src="img/banner/banner-carrent.png" alt="creative-service" class="img-fluid">
+                        <hr>
+                        <h2>Brithday</h2>
+                        <p>Make your graduation invitation....bla bla bla bla</p>
+                        <br>
+                    <div>
+                    <a href="https://www.codepen.io/_fauzanahmad_" class="btn btn-secondary"
+                    target="_blank">Read More ....</a>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card service-item">
+                            <img src="img/banner/banner-portfolio.jpg" alt="webdev-service" class="img-fluid">
+                        <hr>
+                        <h2>Meeting</h2>
+                        <p>Make your graduation invitation....bla bla bla bla</p>
+                        <br>
+                    <div>
+                    <a href="https://www.codepen.io/_fauzanahmad_" class="btn btn-secondary"
+                    target="_blank">Read More ....</a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>   
+</div>
+</section>
+    <!-- Section recent Project -->
+    <section class="section-head section-recent-project text-center" id="portfolio" data-aos="fade-down">
+        <div class="container">
+            <h2>Product</h2>
+            <p>Description This Product</p>
+        </div>
+    </section>
+   <section class="section-recent-project-content">
+             <div class="text-center">
+            <div class="swiper swiper-portfolio p-0 px-lg-3 py-5">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" data-aos="fade-up">
+                        <div class="card recent-project-item my-3"
+                            style="background-image: url('img/banner/Youtube.jpg');">
+                            <div class="card-body">
+                                <small>YouTube</small>
+                                <h5>Programmer Kelaperan</h5>
+                                <div class="divider"></div>
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta minus aperiam et
+                                    vitae
+                                    animi saepe. Numquam fugiat recusandae vitae voluptatibus, laboriosam itaque.</p>
+                                <a href="https://www.youtube.com/channel/UCeEOsRKWZkSlXs2_1Eb-QvA"
+                                    class="btn btn-gr-yellow" target="_blank">Visit</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide" data-aos="fade-up" data-aos-delay="30">
+                        <div class="card recent-project-item my-3"
+                            style="background-image: url('img/banner/reactjs-ecommerce.jpg');">
+                            <div class="card-body">
+                                <small>Programming</small>
+                                <h5>ReactJS E-Commerce</h5>
+                                <div class="divider"></div>
+                                <div class="tech">
+                                    <div class="tech-logo">
+                                        <img src="img/icon/ic-reactjs.png" class="img-fluid">
+                                    </div>
+                                    <div class="tech-logo">
+                                        <img src="img/logo/bootstrap.png" class="img-fluid">
+                                    </div>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta minus aperiam et
+                                    vitae
+                                    animi saepe. Numquam fugiat recusandae vitae voluptatibus, laboriosam itaque.</p>
+                                <a href="https://zanzanmerch.netlify.app/" class="btn btn-gr-yellow"
+                                    target="_blank">Visit</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide" data-aos="fade-up" data-aos-delay="60">
+                        <div class="card recent-project-item my-3"
+                            style="background-image: url('img/banner/Dashboard-design.jpg');">
+                            <div class="card-body">
+                                <small>Programming</small>
+                                <h5>UI Dashboard</h5>
+                                <div class="divider"></div>
+                                <div class="tech">
+                                    <div class="tech-logo">
+                                        <img src="img/logo/bootstrap.png" class="img-fluid">
+                                    </div>
+                                    <div class="tech-logo">
+                                        <img src="img/icon/ic-xd.png" class="img-fluid">
+                                    </div>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta minus aperiam et
+                                    vitae
+                                    animi saepe. Numquam fugiat recusandae vitae voluptatibus, laboriosam itaque.</p>
+                                <a href="https://fauzanahmad11.github.io/z-dashboard-v1/" class="btn btn-gr-yellow"
+                                    target="_blank">Visit</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide" data-aos="fade-up" data-aos-delay="90">
+                        <div class="card recent-project-item my-3"
+                            style="background-image: url('img/banner/login-page-design.jpg');">
+                            <div class="card-body">
+                                <small>Programming</small>
+                                <h5>UI Login</h5>
+                                <div class="divider"></div>
+                                <div class="tech">
+                                    <div class="tech-logo">
+                                        <img src="img/logo/bootstrap.png" class="img-fluid">
+                                    </div>
+                                    <div class="tech-logo">
+                                        <img src="img/icon/ic-xd.png" class="img-fluid">
+                                    </div>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta minus aperiam et
+                                    vitae
+                                    animi saepe. Numquam fugiat recusandae vitae voluptatibus, laboriosam itaque.</p>
+                                <a href="https://fauzanahmad11.github.io/login-page/" class="btn btn-gr-yellow"
+                                    target="_blank">Visit</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide" data-aos="fade-up" data-aos-delay="120">
+                        <div class="card recent-project-item my-3"
+                            style="background-image: url('img/banner/Onlineshop-Website.jpg');">
+                            <div class="card-body">
+                                <small>Programming</small>
+                                <h5>UI Online Store</h5>
+                                <div class="divider"></div>
+                                <div class="tech">
+                                    <div class="tech-logo">
+                                        <img src="img/logo/bootstrap.png" class="img-fluid">
+                                    </div>
+                                    <div class="tech-logo">
+                                        <img src="img/icon/ic-xd.png" class="img-fluid">
+                                    </div>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta minus aperiam et
+                                    vitae
+                                    animi saepe. Numquam fugiat recusandae vitae voluptatibus, laboriosam itaque.</p>
+                                <a href="https://fauzanahmad11.github.io/zworld-store/" class="btn btn-gr-yellow"
+                                    target="_blank">Visit</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide" data-aos="fade-up">
+                        <div class="card recent-project-item my-3"
+                            style="background-image: url('img/banner/blogs-laravel.jpg');">
+                            <div class="card-body">
+                                <small>Programming</small>
+                                <h5>Laravel Blogs</h5>
+                                <div class="divider"></div>
+                                <div class="tech">
+                                    <div class="tech-logo">
+                                        <img src="img/logo/bootstrap.png" class="img-fluid">
+                                    </div>
+                                    <div class="tech-logo">
+                                        <img src="img/icon/ic-laravel.png" class="img-fluid">
+                                    </div>
+                                    <div class="tech-logo">
+                                        <img src="img/logo/sass.png" class="img-fluid">
+                                    </div>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta minus aperiam et
+                                    vitae
+                                    animi saepe. Numquam fugiat recusandae vitae voluptatibus, laboriosam itaque.</p>
+                                <a href="http://fafablog.epizy.com/" class="btn btn-gr-yellow" target="_blank">Visit</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide" data-aos="fade-up" data-aos-delay="30">
+                        <div class="card recent-project-item my-3"
+                            style="background-image: url(https://cdn.dribbble.com/users/4952119/screenshots/15023230/media/df819ed590bfba99fb6defec49ea2f25.png);">
+                            <div class="card-body">
+                                <small>Programming</small>
+                                <h5>Travel Website</h5>
+                                <div class="divider"></div>
+                                <div class="tech">
+                                    <div class="tech-logo">
+                                        <img src="img/logo/bootstrap.png" class="img-fluid">
+                                    </div>
+                                    <div class="tech-logo">
+                                        <img src="img/icon/ic-laravel.png" class="img-fluid">
+                                    </div>
+                                    <div class="tech-logo">
+                                        <img src="img/logo/sass.png" class="img-fluid">
+                                    </div>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta minus aperiam et
+                                    vitae
+                                    animi saepe. Numquam fugiat recusandae vitae voluptatibus, laboriosam itaque.</p>
+                                <a href="https://fauzanahmad11.github.io/zworld-travel/" class="btn btn-gr-yellow"
+                                    target="_blank">Visit</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide" data-aos="fade-up" data-aos-delay="60">
+                        <div class="card recent-project-item my-3"
+                            style="background-image: url('img/banner/olshop-IG.jpg');">
+                            <div class="card-body">
+                                <small>Branding</small>
+                                <h5>IG Online Shop</h5>
+                                <div class="divider"></div>
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta minus aperiam et
+                                    vitae
+                                    animi saepe. Numquam fugiat recusandae vitae voluptatibus, laboriosam itaque.</p>
+                                <a href="https://instagram.com/zworld.id/" class="btn btn-gr-yellow"
+                                    target="_blank">Visit</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide" data-aos="fade-up" data-aos-delay="90">
+                        <div class="card recent-project-item my-3"
+                            style="background-image: url('img/banner/zdesign.jpg');">
+                            <div class="card-body">
+                                <small>Branding</small>
+                                <h5>IG Design</h5>
+                                <div class="divider"></div>
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta minus aperiam et
+                                    vitae
+                                    animi saepe. Numquam fugiat recusandae vitae voluptatibus, laboriosam itaque.</p>
+                                <a href="https://instagram.com/zdesign.in/" class="btn btn-gr-yellow"
+                                    target="_blank">Visit</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide" data-aos="fade-up" data-aos-delay="120">
+                        <div class="card recent-project-item my-3"
+                            style="background-image: url('img/banner/zanzancode.jpg');">
+                            <div class="card-body">
+                                <small>Branding</small>
+                                <h5>IG Programming</h5>
+                                <div class="divider"></div>
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta minus aperiam et
+                                    vitae
+                                    animi saepe. Numquam fugiat recusandae vitae voluptatibus, laboriosam itaque.</p>
+                                <a href="https://instagram.com/zanzancode/" class="btn btn-gr-yellow"
+                                    target="_blank">Visit</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide" data-aos="fade-up">
+                        <div class="card recent-project-item my-3"
+                            style="background-image: url('img/banner/github.jpg');">
+                            <div class="card-body">
+                                <small>Other Site</small>
+                                <h5>Github</h5>
+                                <div class="divider"></div>
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta minus aperiam et
+                                    vitae
+                                    animi saepe. Numquam fugiat recusandae vitae voluptatibus, laboriosam itaque.</p>
+                                <a href="https://www.github.com/fauzanahmad11" class="btn btn-gr-yellow"
+                                    target="_blank">Visit</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide" data-aos="fade-up" data-aos-delay="30">
+                        <div class="card recent-project-item my-3"
+                            style="background-image: url('img/banner/Dribbble.jpg');">
+                            <div class="card-body">
+                                <small>Other Site</small>
+                                <h5>Dribbble</h5>
+                                <div class="divider"></div>
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta minus aperiam et
+                                    vitae
+                                    animi saepe. Numquam fugiat recusandae vitae voluptatibus, laboriosam itaque.</p>
+                                <a href="https://www.dribbble.com/fauzanahmad" class="btn btn-gr-yellow"
+                                    target="_blank">Visit</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide" data-aos="fade-up" data-aos-delay="60">
+                        <div class="card recent-project-item my-3"
+                            style="background-image: url('img/banner/codepen.jpg');">
+                            <div class="card-body">
+                                <small>Other Site</small>
+                                <h5>Codepen</h5>
+                                <div class="divider"></div>
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta minus aperiam et
+                                    vitae
+                                    animi saepe. Numquam fugiat recusandae vitae voluptatibus, laboriosam itaque.</p>
+                                <a href="https://www.codepen.io/_fauzanahmad_" class="btn btn-gr-yellow"
+                                    target="_blank">Visit</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next d-none d-lg-block"></div>
+                <div class="swiper-button-prev d-none d-lg-block"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+   
+    <!-- section-contact -->
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row list-first">
+                <div class="col-12 col-md-2 col-lg-3 mt-0 mt-lg-0 item brand">
+                    <div>
+                        <div class="align-items-center mb-3 text-center">
+                            <img src="img/icon/logo-light.png" class="img-fluid me-6" alt="logo">
+                        </div>  
+                         <h2 class="text-center">D2</h2>
+                        <p>Web developer idola</p></br>    
+                    </div>
+                </div>
+                <div class="col-12 col-md-2 col-lg-3 mt-0 mt-lg-0 item explore">
+                    <div>
+                        <h2 class="text-center">Info</h2>
+                        <br><p>Web developer idola</p></br>
+                    </div>
+                </div>
+                <div class="col-12 col-md-2 col-lg-3 mt-0 mt-lg-0 item contact">
+                    <div>
+                        <h2>Useful Links</h2>
+                            <ul class="nav flex-column">
+                            <li class="nav-item text-center">
+                                <a href="#" class="nav-link">About</a>
+                            </li>
+                            <li class="nav-item text-center">
+                                <a href="#" class="nav-link">home</a>
+                            </li>
+                            <li class="nav-item text-center">
+                                <a href="#" class="nav-link">About us</a>
+                            </li>
+                            </ul>
+                    </div>
+                </div>
+                 <div class="col-12 col-md-2 col-lg-3 mt-0 mt-lg-0 item contact">
+                    <div>
+                        <h2>Useful Links</h2>
+                            <ul class="nav flex-column">
+                            <li class="nav-item text-center">
+                                <a href="#" class="nav-link">About</a>
+                            </li>
+                            <li class="nav-item text-center">
+                                <a href="#" class="nav-link">home</a>
+                            </li>
+                            <li class="nav-item text-center">
+                                <a href="#" class="nav-link">About us</a>
+                            </li>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="container">
+            <div class="row list-secound">
+                <div class="col-12 text-center">
+                    <small>2021 © Copyright Boostrap • All rights reserved • Local Repositories</small>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Scroll To Top Button -->
+    <button class="scroll-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+    <!-- Pre Loader -->
+    <div class="pre-loader">
+        <div class="shape">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+        <div class="shadow">
+            <div class="shape-shadow"></div>
+            <div class="shape-shadow"></div>
+            <div class="shape-shadow"></div>
+        </div>
+    </div>
+
+
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/portfolio-2.js"></script>
+    <!-- FontAwesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/js/all.min.js"
+        integrity="sha512-cyAbuGborsD25bhT/uz++wPqrh5cqPh1ULJz4NSpN9ktWcA6Hnh9g+CWKeNx2R0fgQt+ybRXdabSBgYXkQTTmA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+        });
+    </script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        let swiper = new Swiper(".macbook-img", {
+            spaceBetween: 30,
+            centeredSlides: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".section-works-content .swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".section-works-content .swiper-button-next",
+                prevEl: ".section-works-content .swiper-button-prev",
+            },
+            loop: true,
+        });
+
+        let swiperPortfolio;
+
+        const sizeMinLg = window.matchMedia('(min-width:992px)');
+        if (sizeMinLg.matches) {
+
+            swiperPortfolio = new Swiper(".swiper-portfolio", {
+                slidesPerView: 5,
+                spaceBetween: 30,
+                slidesPerGroup: 5,
+                pagination: {
+                    el: ".swiper-portfolio .swiper-pagination",
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: ".swiper-portfolio .swiper-button-next",
+                    prevEl: ".swiper-portfolio .swiper-button-prev",
+                },
+                loop: true,
+            });
+        }
+        const sizeMaxLg = window.matchMedia('(max-width:992px)');
+        if (sizeMaxLg.matches) {
+
+            swiperPortfolio = new Swiper(".swiper-portfolio", {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                slidesPerGroup: 1,
+                pagination: {
+                    el: ".swiper-portfolio .swiper-pagination",
+                    clickable: true,
+                },
+                loop: true,
+            });
+        }
+    </script>
+    <!-- Vanilla tilt.js -->
+    <script src="js/vanilla-tilt.min.js"></script>
+    <script>
+        const sizeMd = window.matchMedia('(min-width: 992px)');
+        if (sizeMd.matches) {
+            // Tooltip
+            let tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            let tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            });
+            //It also supports NodeList
+            VanillaTilt.init(document.querySelectorAll(".recent-project-item"), {
+                reverse: false,
+                max: 25,
+                startX: 0,
+                startY: 0,
+                perspective: 1000,
+                scale: 1,
+                speed: 2000,
+                transition: true,
+                axis: null,
+                reset: true,
+                easing: "cubic-bezier(.03,.98,.52,.99)",
+                glare: false,
+                "max-glare": 0.3,
+                "glare-prerender": false,
+                "mouse-event-element": null,
+                gyroscope: true,
+                gyroscopeMinAngleX: -60,
+                gyroscopeMaxAngleX: 60,
+                gyroscopeMinAngleY: -60,
+                gyroscopeMaxAngleY: 60,
+            });
+        }
+    </script>
+</body>
+
+</html>

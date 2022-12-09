@@ -1,4 +1,25 @@
-﻿<!DOCTYPE html>
+﻿<?php
+session_start();
+if($_SESSION['level']=="") {
+    header("Location: ../admin/index.php");
+}
+
+elseif ($_SESSION['level']=="petugas") {
+    header("Location: ../user/index.php");
+}
+elseif (!isset($_SESSION['SESSION_EMAIL'])) {
+    header("Location: ../index.php");
+    die();
+}
+
+include "../config.php";
+
+$sql = "SELECT * from users where email='{$_SESSION['SESSION_EMAIL']}'";
+$result = mysqli_query($conn,$sql);
+while ($row = mysqli_fetch_array($result))
+{
+?>
+<!DOCTYPE html>
     <html lang="en">
 
     <head>
@@ -29,7 +50,7 @@
             <div class="leftside-menu">
     
                 <!-- LOGO -->
-                <a href="Admin.html" class="logo text-center logo-light">
+                <a href="index.php" class="logo text-center logo-light">
                     <span class="logo-lg">
                         <img src="assets/images/users/Logo.png" alt="" height="46">
                     </span>
@@ -39,7 +60,7 @@
                 </a>
 
                 <!-- LOGO -->
-                <a href="Admin.html" class="logo text-center logo-dark">
+                <a href="index.php" class="logo text-center logo-dark">
                     <span class="logo-lg">
                         <img src="assets/images/users/Logo_dark.png" alt="" height="46">
                     </span>
@@ -56,27 +77,33 @@
                         <li class="side-nav-title side-nav-item">Admin Settings</li>
 
                                     <li class="side-nav-item">
-                            <a  href="Admin.html"  class="side-nav-link">
+                            <a  href="index.php"  class="side-nav-link">
                                 <i class="uil-home"></i>
                                 <span> Profile </span>
                             </a>
                         </li>
                         <li class="side-nav-item">
-                            <a  href="Daftaruser.html" class="side-nav-link">
+                            <a  href="Daftaruser.php" class="side-nav-link">
                                 <i class="uil-envelope"></i>
                                 <span> List Daftar User</span>
                             </a>
                         </li>
                         <li class="side-nav-item">
-                            <a  href="List.html" class="side-nav-link">
+                            <a  href="List.php" class="side-nav-link">
                                 <i class="uil-briefcase"></i>
                                 <span> list Tema</span>
                             </a>
                         </li>
                         <li class="side-nav-item">
-                            <a  href="statusundangan.html" class="side-nav-link">
+                            <a  href="statusundangan.php" class="side-nav-link">
                                 <i class="uil-envelope"></i>
                                 <span>Status Undangan</span>
+                            </a>
+                        </li>
+                        <li class="side-nav-item">
+                            <a  href="./Tools/scan.php" class="side-nav-link">
+                                <i class="mdi-qrcode"></i>
+                                <span> Scan Qr Code</span>
                             </a>
                         </li>
                     <!-- End Sidebar -->
@@ -163,25 +190,42 @@
                                                 <table class="table">
                                                     <thead>
                                                         <tr>
-                                                            <th scope="col">Nama User</th>
-                                                            <th scope="col">Nama Tema</th>
-                                                            <th scope="col">Qr Code</th>
-                                                            <th scope="col">Status</th>
-                                                            <th scope="col">Nama Tamu</th>
-                                                            <th scope="col">Email Tamu</th>
+                                                            <th scope="col">Judul</th>
+                                                            <th scope="col">User</th>
+                                                            <th scope="col">Tanggal</th>
+                                                            <th scope="col">Action</th>
                                                         </tr>
                                                     </thead>
+                                                    <?php 
+                                                    $sql2 = "SELECT * from undangan where id_user = ".$row["id_user"]."";
+                                                    $result2 = mysqli_query($conn,$sql2);
+                                                    while ($row2 = mysqli_fetch_array($result2))
+                                                    {?>
                                                     <tbody>
                                                         <tr>
-                                                            <th scope="row">Joni</th>
-                                                            <td>wedding</td>
-                                                            <td></td>
-                                                            <td>Enable</td>
-                                                            <td>Joni Iskandar</td>
-                                                            <td>Example@gmail.com</td>
+                                                            <th scope="row"><?php echo $row2["Judul"]?></th>
+                                                            <td><?php echo $row2["id_user"]?></td>
+                                                            <td><?php                                                         
+                                                             if (empty($row2['tgl_acara'])) {
+                                                                echo $row2["tgl_resepsi"];
+                                                            } else {
+                                                                echo $row2["tgl_acara"];;
+                                                            }
+                                                            ?></td>
+                                                            <td>
+                                                                
+                                                                <a href="./Tools/daftartamu.php?id_undangan=<?php echo $row2['id_undangan'];?>">Daftar Tamu</a> |
+                                                                <a href="./Tools/delete.php?id_undangan=<?php echo $row2['id_undangan'];?>" onclick="return confirm('apakah kamu yakin?')">Delete</a> |
+                                                                <a href="../Redirect.php?id_tema=<?php echo $row2['id_kategori']; ?>&id_undangan=<?php echo $row2['id_undangan'];?>"">Lihat</a> |
+                                                                <a href="./Tools/daftarsusunan.php?id_undangan=<?php echo $row2['id_undangan'];?>">Susunan</a> |
+                                                            </td>
                                                         </tr>
+                                                        
                                                     </tbody>
-                                                </table>  
+                                                    <?php } ?>
+                                                    
+                                                </table>
+                                                <a href="./form/kategory" class="btn btn-primary">Tambah Undangan</a>  
                                             </div>
                                         </div>
                                         </div>  
@@ -247,3 +291,6 @@
         <!-- end demo js-->
     </body>
 </html>
+
+
+<?php } ?>

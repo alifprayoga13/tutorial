@@ -8,10 +8,9 @@
     include 'config.php';
 
     $query = mysqli_query($conn, "SELECT * FROM users WHERE email='{$_SESSION['SESSION_EMAIL']}'");
-
+	
     if (mysqli_num_rows($query) > 0) {
 		$row = mysqli_fetch_assoc($query);
-		$_SESSION['username']	= $row['username'];
 		$_SESSION['level']  = $row['level'];
 		
 		if($row['level'] == "admin")
@@ -20,7 +19,7 @@
 		}
 		else if($row['level'] =="user")
 		{
-			echo "<script>alert('Welcome To user !');document.location.href='user/'</script>/n";
+			echo "<script>alert('Welcome To user !');document.location.href='./'</script>/n";
 		}
 		else
 		{
