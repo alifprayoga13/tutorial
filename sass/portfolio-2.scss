@@ -30,7 +30,7 @@ $xxl : 1400px; // >=
     --fs-head-secoundary: 2.8rem;
     --fs-body-primary: 1rem;
     --fs-body-secoundary: .8rem;
-    --gr-main: linear-gradient(180deg, #000000 0%, #1081E8 100%);
+    --gr-main: linear-gradient(180deg, #006ACA 0%, #1081E8 100%);
     --bs-navbar-main:0 3px 20px rgba(0, 0, 0, .3);
 }
 
@@ -155,7 +155,7 @@ body.light{
     }
     .main-header{
 
-        background: linear-gradient(180deg, #00ffff 0%, #f80000 100%);
+        background: linear-gradient(180deg, #006ACA 0%, #1081E8 100%);
         padding: 2rem 0;
         .hero{
             position: relative;
@@ -203,9 +203,9 @@ body.light{
         .navbar{
             .navbar-nav{
                 .nav-item{
-                    padding-left: 2rem;
-                    .nav-link:hover{
-                        color:$text-primary;
+                    padding-left: ;
+                    .nav-link{
+                       margin-top: 10px;
                     }
                 }
             }

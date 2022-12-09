@@ -19,7 +19,7 @@ while($row = mysqli_fetch_array($result)){
     <meta name="theme-color" content="#BC8887" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>:: Happy Graduation ::</title>
+    <title>:: Happy Birthday ::</title>
 
     <meta property="og:title" content="Undangan Pernikahan Sherly & Daeng - Sabtu, 21 Maret 2020">
     <meta property="og:description" content="Undangan Pernikahan Sherly & Daeng - Sabtu, 21 Maret 2020 di RM Pondok Kenanga, Jakasampurna Bekasi">
@@ -103,15 +103,13 @@ while($row = mysqli_fetch_array($result)){
         <!-- Begin Hero Content-->
         <div class="hero-body">
           <div class="container has-text-centered">
-            <h2 class="subtitle">Happy Birth Day</h2>
-            <h2 class="title"><?php echo $row["nama_org_ultah"]?></h2>
+            <h2 class="title">Happy Birthday</h2>
             <h4 class="subtitle tempatwaktu">
               
                 <?php echo $row["tgl_acara"]?>
                 </br>
                 <?php echo $row["lokasi_acara"]?>
                 </br>
-                Kota Malang
             </h4>
           </div>
           <!-- Start Countdown -->       
@@ -135,6 +133,7 @@ while($row = mysqli_fetch_array($result)){
 
 
                   <li>
+                    <a href="#rsvp">Pesan</a>
                   </li>
                 </ul>
               </div>
@@ -168,24 +167,21 @@ while($row = mysqli_fetch_array($result)){
         <span class="space40px"></span>
         <span class="space40px"></span>
         <div data-aos="fade-up" data-aos-easing="linear">
-
-<p class="bodytext" data-aos="fade-up" data-aos-easing="linear">
-<h1 class="title has-text-centered section-title">Susunan</h1>
-<?php 
+        <p class="bodytext" data-aos="fade-up" data-aos-easing="linear">
+        <h1 class="title has-text-centered section-title">Susunan</h1>
+        <?php 
             $sql2 = "SELECT * from susunan where id_undangan=$get_id";
             $result2 = mysqli_query($conn,$sql2);
             while ($row2 = mysqli_fetch_array($result2))
             {?>
-            <p class="card-text text-center" ><?php echo $row2["acara"]?> </p>
+            <?php echo $row2["acara"]?> </p>
             <?php } ?>
-</p>
-
-       
+        </p>
         <div data-aos="fade-up" data-aos-easing="linear">
 
           <p class="bodytext" data-aos="fade-up" data-aos-easing="linear">
           <h1 class="title has-text-centered section-title">Deskripsi</h1>
-            <?php echo $row["deskripsi"] ?>
+            <?php   echo $row["deskripsi"] ?> 
         </p>
 
            
@@ -271,22 +267,11 @@ while($row = mysqli_fetch_array($result)){
                 Merupakan suatu kehormatan dan kebahagiaan bagi kami
                 <br>
                 apabila Bapak/Ibu/Saudara/Saudari berkenan hadir <br>
-                Menghadiri acara Ulang Tahun Saya Di <?php echo $row["nama_kampus"]?>
+                Menghadiri acara Ulang Tahun Saya Di <?php echo $row["nama_org_ultah"]?>
                 <br>
                 <br>
-                Jika bisa hadir silakan menuju Yang buat untuk scan QR Code 
+                Jika bisa hadir silakan menuju wakil untuk scan QR Code 
                 <br>
-                <?php
-                $sql2 = "SELECT * FROM `tamu` WHERE `id_undangan` = ".$get_id." AND id_tamu=".$_GET['id_tamu']."";
-                $result2 = mysqli_query($conn,$sql2);
-                while($row2 = mysqli_fetch_array($result2)){
-                
-                ?>
-                <img src="../../upload/qrcode-img/<?php echo $data['qr_code']?>" alt="">
-                <?php } ?>
-                <br>
-                dan para walinya sendiri-sendiri
-                yang nantinya juga datang diacara terimakasih.
                 <br>
                 <br>
                 Jika tidak memungkinkan untuk hadir di acara Ulang Tahun kami,tidak mengapa,

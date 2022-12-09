@@ -57,7 +57,7 @@ main {
 
 .btn.btn-gr-blue {
   background: -webkit-gradient(linear, left bottom, left top, from(#0864bb), to(#1b91ff));
-  background: linear-gradient(0deg, #000000 0%, #1b91ff 100%);
+  background: linear-gradient(0deg, #0864bb 0%, #1b91ff 100%);
   color: #ffffff;
   border: unset;
 }
@@ -773,7 +773,7 @@ body.light .section-previous-portfolio::after {
 }
 
 body.light footer {
-  background-color: #006ACA;
+  background-color: #0F2851;
 }
 
 body.light footer hr {
@@ -1298,7 +1298,7 @@ body.light .pre-loader .shadow .shape-shadow:nth-child(3) {
 }
 
 body.light .section-recent-portfolio {
-  background-image: url("");
+  background-image: url("../img/bg-ability.png");
   background-size: 100% auto;
   background-repeat: no-repeat;
   background-position: 0 0;
@@ -1462,7 +1462,6 @@ body.light .tooltip-inner {
   }
   body.light .main-header {
     padding: 0 0 5rem;
-    background: #070606;
   }
   body.light .main-header .hero {
     position: relative;
@@ -1676,7 +1675,7 @@ body.light .tooltip-inner {
     bottom: 0;
     right: 0;
     background: -webkit-gradient(linear, left bottom, left top, from(#0864bb), to(#1b91ff));
-    background: linear-gradient(180deg, #000000 0%, #000000 100%);
+    background: linear-gradient(0deg, #0864bb 0%, #1b91ff 100%);
     z-index: 20;
     overflow: hidden;
     -webkit-transition: 50ms all ease-in-out;
@@ -1767,7 +1766,7 @@ body.light .tooltip-inner {
             flex-direction: column;
   }
   body.light footer .list-first .item.brand .brand img[alt=logo] {
-    margin-top: -16px;
+    margin-top: -30px;
   }
   body.light footer .list-first .item.contact ul, body.light footer .list-first .item.address ul {
     list-style: none;

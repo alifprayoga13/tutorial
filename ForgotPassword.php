@@ -96,7 +96,7 @@ if (isset($_POST['submit'])) {
                     <div class="col-lg-12">
                         <div class="header slideDown">
                             <div class="logo"><img src="assets/images/logo 1.png" alt=""></div>
-                            <h1>Happy Wedding</h1>
+                            <h1>Yuk buat Undangan</h1>
                             <ul class="list-unstyled l-social">
                                 <li><a href="https://web.facebook.com/?_rdc=1&_rdr"><i class="zmdi zmdi-facebook-box"></i></a></li>
                                 <li><a href="https://www.linkedin.com/feed/"><i class="zmdi zmdi-linkedin-box"></i></a></li>

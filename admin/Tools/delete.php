@@ -5,8 +5,7 @@ include "../../config.php";
 if(isset($_GET['id_user']))
 {
     $id_user = $_GET['id_user'];
-    mysqli_query($conn,"DELETE FROM undangan WHERE id_undangan='$id_user'") or die(mysqli_error());
-    mysqli_query($conn,"DELETE FROM susunan WHERE id_undangan='$id_user'") or die(mysqli_error());
+    mysqli_query($conn,"DELETE FROM undangan WHERE id_user='$id_user'") or die(mysqli_error());
     mysqli_query($conn,"DELETE FROM users WHERE id_user='$id_user'") or die(mysqli_error());
     echo "<script>alert('data berhasil di hapus');document.location.href='../Daftaruser.php'</script>";
 }elseif(isset($_GET['id_undangan']))
