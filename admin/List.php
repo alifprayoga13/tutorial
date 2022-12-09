@@ -1,4 +1,22 @@
-﻿<!DOCTYPE html>
+﻿<?php 
+include "../config.php";
+session_start();
+
+if($_SESSION['level']=="") {
+    header("Location: ../admin/index.php");
+}
+
+elseif ($_SESSION['level']=="petugas") {
+    header("Location: ../user/index.php");
+}
+elseif (!isset($_SESSION['SESSION_EMAIL'])) {
+    header("Location: ../index.php");
+    die();
+
+    
+} 
+?>
+<!DOCTYPE html>
     <html lang="en">
 
     <head>
@@ -29,7 +47,7 @@
             <div class="leftside-menu">
     
                 <!-- LOGO -->
-                <a href="Admin.html" class="logo text-center logo-light">
+                <a href="index.html" class="logo text-center logo-light">
                     <span class="logo-lg">
                         <img src="assets/images/users/Logo.png" alt="" height="46">
                     </span>
@@ -39,7 +57,7 @@
                 </a>
 
                 <!-- LOGO -->
-                <a href="Admin.html" class="logo text-center logo-dark">
+                <a href="index.php" class="logo text-center logo-dark">
                     <span class="logo-lg">
                         <img src="assets/images/users/Logo_dark.png" alt="" height="46">
                     </span>
@@ -56,27 +74,33 @@
                         <li class="side-nav-title side-nav-item">Admin Settings</li>
 
                         <li class="side-nav-item">
-                            <a  href="Admin.html"  class="side-nav-link">
+                            <a  href="index.php"  class="side-nav-link">
                                 <i class="uil-home"></i>
                                 <span> Profile </span>
                             </a>
                         </li>
                         <li class="side-nav-item">
-                            <a  href="Daftaruser.html" class="side-nav-link">
+                            <a  href="Daftaruser.php" class="side-nav-link">
                                 <i class="uil-envelope"></i>
                                 <span> List Daftar User</span>
                             </a>
                         </li>
                         <li class="side-nav-item">
-                            <a  href="List.html" class="side-nav-link">
+                            <a  href="List.php" class="side-nav-link">
                                 <i class="uil-briefcase"></i>
                                 <span> list Tema</span>
                             </a>
                         </li>
                         <li class="side-nav-item">
-                            <a  href="statusundangan.html" class="side-nav-link">
+                            <a  href="statusundangan.php" class="side-nav-link">
                                 <i class="uil-envelope"></i>
                                 <span>Status Undangan</span>
+                            </a>
+                        </li>
+                        <li class="side-nav-item">
+                            <a  href="./Tools/scan.php" class="side-nav-link">
+                                <i class="mdi-qrcode"></i>
+                                <span> Scan Qr Code</span>
                             </a>
                         </li>
                     <!-- End Sidebar -->
@@ -158,29 +182,45 @@
                             <div class="col-lg-13">
                                 <div class="card">
                                     <div class="card-body">
+                                        <a href="./Tools/tambahtema.php" class="btn btn-primary">Tambah Tema</a>
                                         <div class="row">
                                             <div class="table-responsive">
                                                 <table class="table">
                                                     <thead>
                                                         <tr>
                                                             <th scope="col">Nama Tema</th>
-                                                            <th scope="col">File HTML</th>
-                                                            <th scope="col">Deskripsi</th>
+                                                            <th scope="col">Nama</th>
+                                                            <th scope="col">Action</th>
                                                         </tr>
                                                     </thead>
+
                                                     <tbody>
+                                                    <?php 
+                                                    include "../config.php";;
+                                                            $sql = "SELECT * from kategori";
+                                                            $result = mysqli_query($conn,$sql);
+                                                            while ($row = mysqli_fetch_array($result))
+                                                            {?>
                                                         <tr>
-                                                            <th scope="row">wedding</th>
-                                                            <td>1</td>
-                                                            <td>wedding Party</td>
+                                                            <th scope="row"><?php echo $row["id_kategori"]?></th>
+                                                            <td><?php echo $row["nama"]?></td>
+                                                            <td>
+                                                            <a href="./Tools/edittema.php?id_kategori=<?php echo $row['id_kategori'];?>">Edit</a> |
+                                                                <a href="./Tools/delete.php?id_kategori=<?php echo $row['id_kategori'];?>" onclick="return confirm('apakah kamu yakin?')">Delete</a> 
+                                                            </td>
                                                         </tr>
+                                                        <?php } ?>
                                                     </tbody>
                                                 </table>  
                                             </div>
                                         </div>
                                         </div>  
+                                        
                                         </div>
+
                                     </div>
+
+                                   
                                     </div> <!-- end card-body-->
                                 </div> <!-- end card-->
                             </div> <!-- end col-->

@@ -44,9 +44,9 @@ if (isset($_POST['submit'])) {
                     $mail->Host       = 'smtp-relay.sendinblue.com';                     //Set the SMTP server to send through
                     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
                     $mail->Username   = 'anonymoyan@tutanota.com';                     //SMTP username
-                    $mail->Password   = 'xsmtpsib-1011b000e4813ba86e48f16a64f0d61afd31c15cd360e6072b5e5df94a2f65a3-UzsE3Ch6QtIRybJ4';                               //SMTP password           //Enable implicit TLS encryption
-                    $mail->Port       = 587;        
-                    $mail->SMTPSecure = 'tls';                         //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+                    $mail->Password   = '4tbjwHVa3zcXY5kN';                               //SMTP password
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+                    $mail->Port       = 465;    
 
                     //Recipients
                     $mail->setFrom('NoReplyKnoyan@foragikitsune.my.id');
@@ -55,7 +55,7 @@ if (isset($_POST['submit'])) {
                     //Content
                     $mail->isHTML(true);                                  //Set email format to HTML
                     $mail->Subject = 'no reply';
-                    $mail->Body    = 'Here is the verification link <b><a href="http://localhost/tutorial/?verification=' . $code . '">http://localhost/tutorial/?verification=' . $code . '</a></b>';
+                    $mail->Body    = 'Here is the verification link <b><a href="http://localhost/tutorial/login.php?verification=' . $code . '">http://localhost/tutorial/login.php?verification=' . $code . '</a></b>';
                     
                     
                     $mail->send();
@@ -137,7 +137,7 @@ if (isset($_POST['submit'])) {
                         <div class="form-group form-float">
                             <div class="form-line">
                             <input type="password" class="form-control confirm-password" name="confirm-password"  required>
-                                <label class="form-label">Password</label>
+                                <label class="form-label">Comfirm Password</label>
                             </div>
                         </div>
 
@@ -147,18 +147,7 @@ if (isset($_POST['submit'])) {
                         </div>
                     </form>
 
-                    <div class="col-lg-12">
-                        <br>
-                        <p>or sign up with</p>
-                    </div>
-                    <div class="col-lg-12">
-                        <br>
-                        <ul class="list-unstyled l-social">
-                            <li>
-                                <a href="https://www.google.com/?hl=id"><i class="zmdi zmdi-google"></i></a>
-                            </li>
-                        </ul>
-                    </div>
+             
                     <div class="col-lg-12 m-t-20">
                         <P>Already Have An Account?<a class="m-3" href="index.php">Sign In</a></P>
                     </div>

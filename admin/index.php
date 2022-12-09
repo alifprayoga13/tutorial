@@ -4,7 +4,7 @@ if($_SESSION['level']=="") {
     header("Location: ../admin/index.php");
 }
 
-elseif ($_SESSION['level']=="petugas") {
+elseif ($_SESSION['level']=="user") {
     header("Location: ../user/index.php");
 }
 elseif (!isset($_SESSION['SESSION_EMAIL'])) {
@@ -97,17 +97,16 @@ while ($row = mysqli_fetch_array($result))
                                 <span> List Tema </span>
                             </a>
                         </li>
-
-                        <li class="side-nav-item">
-                            <a  href="Undangan.php" class="side-nav-link">
-                                <i class="uil-envelope"></i>
-                                <span> Undangan</span>
-                            </a>
-                        </li>
                         <li class="side-nav-item">
                             <a  href="statusundangan.php"  class="side-nav-link">
                                 <i class="uil-rss"></i>
                                 <span> Status Undangan </span>
+                            </a>
+                        </li>
+                        <li class="side-nav-item">
+                            <a  href="./Tools/scan.php" class="side-nav-link">
+                                <i class="mdi-qrcode"></i>
+                                <span> Scan Qr Code</span>
                             </a>
                         </li>
                     <!-- End Sidebar -->
@@ -210,6 +209,7 @@ while ($row = mysqli_fetch_array($result))
                                             while ($row = mysqli_fetch_array($result))
                                             {
                                         ?>
+
                                              <div class="card-text text-center">
                                                 <p>Total Undangan</p>
                                              </div>
